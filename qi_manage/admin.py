@@ -14,3 +14,7 @@ admin.site.register(RooftopFinish)
 admin.site.register(SkylightRetrofit)
 admin.site.register(SolarEnergy)
 admin.site.register(ElevatorEscalator)
+
+admin.site.register(HVACSystem)
+admin.site.register(LightType)
+admin.site.register(LightControl)

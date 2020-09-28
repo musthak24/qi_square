@@ -126,3 +126,36 @@ class ElevatorEscalator(models.Model):
 
     def __str__(self):
         return self.system_name
+
+
+class HVACSystem(models.Model):
+    hvac_system = models.CharField(null=True, blank=True, max_length=127)
+    hvac_cop = models.DecimalField(max_digits=4, decimal_places=1, default=None)
+    hvac_system_cost = models.DecimalField(max_digits=6, decimal_places=2, default=None)
+    hvac_savings_perc = models.DecimalField(max_digits=6, decimal_places=2, default=None)
+    system_status = models.SmallIntegerField(blank=True, default=1)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.hvac_system
+
+class LightType(models.Model):
+    light_type = models.CharField(null=True, blank=True, max_length=127)
+    efficacy = models.IntegerField(null=True, blank=True, default=0)
+    light_cost = models.DecimalField(max_digits=6, decimal_places=2, default=None)
+    light_is_auto = models.SmallIntegerField(blank=True, default=0)
+    light_status = models.SmallIntegerField(blank=True, default=1)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now_add=True)
+
+
+class LightControl(models.Model):
+    light_control = models.CharField(null=True, blank=True, max_length=127)
+    light_sqm_area = models.DecimalField(max_digits=6, decimal_places=2, default=None)
+    light_sensor_factor = models.DecimalField(max_digits=6, decimal_places=2, default=None)
+    control_status = models.SmallIntegerField(blank=True, default=1)
+    control_is_auto = models.SmallIntegerField(blank=True, default=0)
+    control_cost = models.DecimalField(max_digits=6, decimal_places=2, default=None)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now_add=True)
