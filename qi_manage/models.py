@@ -140,6 +140,7 @@ class HVACSystem(models.Model):
     def __str__(self):
         return self.hvac_system
 
+
 class LightType(models.Model):
     light_type = models.CharField(null=True, blank=True, max_length=127)
     efficacy = models.IntegerField(null=True, blank=True, default=0)
@@ -157,5 +158,16 @@ class LightControl(models.Model):
     control_status = models.SmallIntegerField(blank=True, default=1)
     control_is_auto = models.SmallIntegerField(blank=True, default=0)
     control_cost = models.DecimalField(max_digits=6, decimal_places=2, default=None)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now_add=True)
+
+
+class LightRetrofit(models.Model):
+    retrofit_type = models.CharField(null=True, blank=True, max_length=127)
+    saving_factor = models.DecimalField(max_digits=6, decimal_places=2, default=0.0)
+    cost = models.DecimalField(max_digits=6, decimal_places=2, default=0.0)
+
+    status = models.SmallIntegerField(blank=True, default=1)
+
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now_add=True)
